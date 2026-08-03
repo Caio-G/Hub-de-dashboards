@@ -132,21 +132,6 @@
         </div>
       </div>
 
-      <!-- Perfil do usuário -->
-      <div class="flex items-center gap-3 shrink-0">
-        <button class="relative hidden sm:inline-flex items-center justify-center w-9 h-9 rounded-full hover:bg-white/10 transition">
-          <i data-lucide="bell" class="w-5 h-5"></i>
-          <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-emerald-500 rounded-full ring-2 ring-institucional-800"></span>
-        </button>
-        <div class="flex items-center gap-2 pl-3 border-l border-white/15">
-          <div class="w-8 h-8 rounded-full bg-emerald-600 flex items-center justify-center font-semibold text-xs">MC</div>
-          <div class="hidden md:block leading-tight">
-            <p class="text-xs font-semibold">Marina Costa</p>
-            <p class="text-[10px] text-institucional-100/70">Analista de Dados</p>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </header>
@@ -258,7 +243,7 @@ const dashboards = [
     categoria: "Receita",
     descricao: "Acompanhamento diário de entradas das receitas do município.",
     iframeUrl: "https://app.powerbi.com/view?r=eyJrIjoiNTg0ODk5ZjktOTU0MS00Mzc4LWIwYjItMzBmMDFlMjYwYTdlIiwidCI6ImZiNTdmZjlkLWJjNjMtNGE2ZS1iMTQ3LTI5NjE3NmVjZTVlYyJ9",
-    icone: "dollar-sign",
+    icone: "banknote-arrow-down",
     destaque: true
   },
   {
@@ -267,7 +252,7 @@ const dashboards = [
     categoria: "Despesa",
     descricao: "Monitoramento das despesas do município",
     iframeUrl: "https://app.powerbi.com/view?r=eyJrIjoiM2I4YTBkMGUtOGU2OS00MjA1LWE2NTYtMGY3MjEwY2JjN2Q3IiwidCI6ImZiNTdmZjlkLWJjNjMtNGE2ZS1iMTQ3LTI5NjE3NmVjZTVlYyJ9",
-    icone: "users",
+    icone: "banknote-arrow-up",
     destaque: false
   },
   {
@@ -276,7 +261,7 @@ const dashboards = [
     categoria: "Despesa",
     descricao: "Monitoramento das emendas impositivas do município.",
     iframeUrl: "https://app.powerbi.com/view?r=eyJrIjoiODlkN2Q4NTMtNzk4ZC00ODA0LWJkNTgtMWNmOGU2MzAxZGNlIiwidCI6ImZiNTdmZjlkLWJjNjMtNGE2ZS1iMTQ3LTI5NjE3NmVjZTVlYyJ9",
-    icone: "trending-up",
+    icone: "scroll-text",
     destaque: false
   },
   {
@@ -285,7 +270,7 @@ const dashboards = [
     categoria: "Despesa",
     descricao: "Monitoramento dos gastos com folha de pessoal no município",
     iframeUrl: "https://app.fabric.microsoft.com/view?r=eyJrIjoiMjJkZmNiMmYtMTk1OC00ZGQyLTg3ZTEtYWQ3NmRkM2VkYTNlIiwidCI6ImZiNTdmZjlkLWJjNjMtNGE2ZS1iMTQ3LTI5NjE3NmVjZTVlYyJ9",
-    icone: "truck",
+    icone: "hand-coins",
     destaque: false
   },
   {
@@ -294,7 +279,7 @@ const dashboards = [
     categoria: "Elaboração",
     descricao: "Elaboração orçamentária de 2025 para o ano de 2026",
     iframeUrl: "https://app.powerbi.com/view?r=eyJrIjoiNjMxNmY2YjYtYTkzOS00MWE3LThhZjItNjdmYmUzZDhjNWNiIiwidCI6ImZiNTdmZjlkLWJjNjMtNGE2ZS1iMTQ3LTI5NjE3NmVjZTVlYyJ9&pageName=ReportSection4490c6fa130bd8c1d028",
-    icone: "wallet",
+    icone: "orbit",
     destaque: false
   },
   {
@@ -303,7 +288,7 @@ const dashboards = [
     categoria: "Elaboração",
     descricao: "Elaboração orçamentária de 2026 para o ano de 2027",
     iframeUrl: "https://app.powerbi.com/view?r=eyJrIjoiMjAyMzY1ZGQtMWE5MC00YTQ1LWI5YmYtNTYwYTIzNDNjYTBjIiwidCI6ImZiNTdmZjlkLWJjNjMtNGE2ZS1iMTQ3LTI5NjE3NmVjZTVlYyJ9",
-    icone: "user-plus",
+    icone: "orbit",
     destaque: false
   }
 ];
