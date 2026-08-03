@@ -203,14 +203,6 @@
       </p>
     </div>
     <div>
-      <h4 class="font-semibold text-white mb-3 text-sm uppercase tracking-wide">Status das Atualizações</h4>
-      <ul class="space-y-2 text-sm text-institucional-100/70">
-        <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> Última sincronização: hoje, 06h15</li>
-        <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> 6 painéis monitorados, 6 operacionais</li>
-        <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-amber-400"></span> Próxima atualização programada: 22h00</li>
-      </ul>
-    </div>
-    <div>
       <h4 class="font-semibold text-white mb-3 text-sm uppercase tracking-wide">Suporte &amp; Contato</h4>
       <p class="text-sm text-institucional-100/70">Equipe da SAP</p>
       <a href="mailto:bi.suporte@institucional.gov.br" class="text-sm text-emerald-400 hover:text-emerald-300 transition inline-flex items-center gap-1.5 mt-1">
@@ -320,7 +312,7 @@ const dashboards = [
     titulo: "Elaboração 2026",
     categoria: "Elaboração",
     descricao: "Elaboração orçamentária de 2026 para o ano de 2027",
-    iframeUrl: "https://app.powerbi.com/view?r=eyJrIjoiRECRUTAMENTO_SELECAO_DEMO",
+    iframeUrl: "https://app.powerbi.com/view?r=eyJrIjoiMjAyMzY1ZGQtMWE5MC00YTQ1LWI5YmYtNTYwYTIzNDNjYTBjIiwidCI6ImZiNTdmZjlkLWJjNjMtNGE2ZS1iMTQ3LTI5NjE3NmVjZTVlYyJ9",
     status: "Atualizado há 5h",
     statusColor: "amber",
     icone: "user-plus",
@@ -399,9 +391,6 @@ function renderHero() {
               <i data-lucide="external-link" class="w-4 h-4"></i>
               Abrir Painel Principal
             </button>
-            <span class="hidden sm:inline-flex items-center gap-1.5 text-sm text-institucional-50/75">
-              <span class="w-2 h-2 rounded-full ${statusDot[destaque.statusColor]}"></span> ${destaque.status}
-            </span>
           </div>
         </div>
         <div class="hidden md:flex w-40 h-40 rounded-2xl bg-white/10 ring-1 ring-white/15 items-center justify-center shrink-0">
