@@ -258,8 +258,6 @@ const dashboards = [
     categoria: "Receita",
     descricao: "Acompanhamento diário de entradas das receitas do município.",
     iframeUrl: "https://app.powerbi.com/view?r=eyJrIjoiNTg0ODk5ZjktOTU0MS00Mzc4LWIwYjItMzBmMDFlMjYwYTdlIiwidCI6ImZiNTdmZjlkLWJjNjMtNGE2ZS1iMTQ3LTI5NjE3NmVjZTVlYyJ9",
-    status: "Atualizado hoje",
-    statusColor: "emerald",
     icone: "dollar-sign",
     destaque: true
   },
@@ -269,8 +267,6 @@ const dashboards = [
     categoria: "Despesa",
     descricao: "Monitoramento das despesas do município",
     iframeUrl: "https://app.powerbi.com/view?r=eyJrIjoiM2I4YTBkMGUtOGU2OS00MjA1LWE2NTYtMGY3MjEwY2JjN2Q3IiwidCI6ImZiNTdmZjlkLWJjNjMtNGE2ZS1iMTQ3LTI5NjE3NmVjZTVlYyJ9",
-    status: "Atualizado hoje",
-    statusColor: "emerald",
     icone: "users",
     destaque: false
   },
@@ -280,8 +276,6 @@ const dashboards = [
     categoria: "Despesa",
     descricao: "Monitoramento das emendas impositivas do município.",
     iframeUrl: "https://app.powerbi.com/view?r=eyJrIjoiODlkN2Q4NTMtNzk4ZC00ODA0LWJkNTgtMWNmOGU2MzAxZGNlIiwidCI6ImZiNTdmZjlkLWJjNjMtNGE2ZS1iMTQ3LTI5NjE3NmVjZTVlYyJ9",
-    status: "Atualizado há 2h",
-    statusColor: "emerald",
     icone: "trending-up",
     destaque: false
   },
@@ -291,8 +285,6 @@ const dashboards = [
     categoria: "Despesa",
     descricao: "Monitoramento dos gastos com folha de pessoal no município",
     iframeUrl: "https://app.fabric.microsoft.com/view?r=eyJrIjoiMjJkZmNiMmYtMTk1OC00ZGQyLTg3ZTEtYWQ3NmRkM2VkYTNlIiwidCI6ImZiNTdmZjlkLWJjNjMtNGE2ZS1iMTQ3LTI5NjE3NmVjZTVlYyJ9",
-    status: "Atualizado ontem",
-    statusColor: "amber",
     icone: "truck",
     destaque: false
   },
@@ -302,8 +294,6 @@ const dashboards = [
     categoria: "Elaboração",
     descricao: "Elaboração orçamentária de 2025 para o ano de 2026",
     iframeUrl: "https://app.powerbi.com/view?r=eyJrIjoiNjMxNmY2YjYtYTkzOS00MWE3LThhZjItNjdmYmUzZDhjNWNiIiwidCI6ImZiNTdmZjlkLWJjNjMtNGE2ZS1iMTQ3LTI5NjE3NmVjZTVlYyJ9&pageName=ReportSection4490c6fa130bd8c1d028",
-    status: "Atualizado hoje",
-    statusColor: "emerald",
     icone: "wallet",
     destaque: false
   },
@@ -313,8 +303,6 @@ const dashboards = [
     categoria: "Elaboração",
     descricao: "Elaboração orçamentária de 2026 para o ano de 2027",
     iframeUrl: "https://app.powerbi.com/view?r=eyJrIjoiMjAyMzY1ZGQtMWE5MC00YTQ1LWI5YmYtNTYwYTIzNDNjYTBjIiwidCI6ImZiNTdmZjlkLWJjNjMtNGE2ZS1iMTQ3LTI5NjE3NmVjZTVlYyJ9",
-    status: "Atualizado há 5h",
-    statusColor: "amber",
     icone: "user-plus",
     destaque: false
   }
@@ -336,8 +324,6 @@ const categoriaCores = {
   "Despesa": "bg-violet-100 text-violet-800",
   "Elaboração": "bg-blue-100 text-blue-800"
 };
-
-const statusDot = { emerald: "bg-emerald-500", amber: "bg-amber-400" };
 
 /* =========================================================
    3. RENDER — Barra de filtros
@@ -464,11 +450,6 @@ function renderGrid() {
           <h3 class="font-bold text-slate-800 mb-1.5 leading-snug">${d.titulo}</h3>
           <p class="text-sm text-slate-500 leading-relaxed line-clamp-2 mb-4">${d.descricao}</p>
 
-          <div class="mt-auto flex items-center gap-1.5 text-xs text-slate-500 mb-4">
-            <span class="w-2 h-2 rounded-full ${statusDot[d.statusColor]}"></span>
-            ${d.status}
-          </div>
-
           <button
             class="acessar-painel-btn w-full inline-flex items-center justify-center gap-2 bg-institucional-800 hover:bg-institucional-900 active:scale-[0.98] transition text-white text-sm font-semibold py-2.5 rounded-lg"
             data-id="${d.id}"
@@ -522,7 +503,7 @@ function abrirModal(id) {
   if (!d) return;
 
   modalTitle.textContent = d.titulo;
-  modalSubtitle.textContent = `${d.categoria} • ${d.status}`;
+  modalSubtitle.textContent = `${d.categoria}`;
   modalIconWrap.innerHTML = `<i data-lucide="${d.icone}" class="w-5 h-5"></i>`;
 
   modalLoading.classList.remove("hidden");
