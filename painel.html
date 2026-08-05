@@ -225,7 +225,7 @@
     <div class="relative flex-1 bg-slate-100">
       <div id="modal-loading" class="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-slate-100">
         <div class="w-10 h-10 border-4 border-institucional-600/20 border-t-institucional-600 rounded-full animate-spin"></div>
-        <p class="text-sm text-slate-500">Carregando painel Power BI...</p>
+        <p class="text-sm text-slate-500">Carregando painel...</p>
       </div>
       <iframe id="modal-iframe" title="Visualizador de Dashboard" class="w-full h-full border-0" allowfullscreen></iframe>
     </div>
@@ -241,51 +241,77 @@ const dashboards = [
     id: 1,
     titulo: "Arrecadação",
     categoria: "Receita",
+    ferramenta: "Google Data Studio",
+    descricao: "Acompanhamento diário de entradas das receitas do município.",
+    iframeUrl: "https://datastudio.google.com/embed/reporting/fb5090a1-1f31-473b-b200-edd7379fe0f0/page/p_f2bhfg56zd",
+    icone: "banknote-arrow-down",
+    destaque: true
+  },
+  {
+    id: 2,
+    titulo: "Arrecadação",
+    categoria: "Receita",
+    ferramenta: "Power BI",
     descricao: "Acompanhamento diário de entradas das receitas do município.",
     iframeUrl: "https://app.powerbi.com/view?r=eyJrIjoiNTg0ODk5ZjktOTU0MS00Mzc4LWIwYjItMzBmMDFlMjYwYTdlIiwidCI6ImZiNTdmZjlkLWJjNjMtNGE2ZS1iMTQ3LTI5NjE3NmVjZTVlYyJ9",
     icone: "banknote-arrow-down",
     destaque: true
   },
   {
-    id: 2,
+    id: 3,
     titulo: "Despesas",
     categoria: "Despesa",
+    ferramenta: "Google Data Studio",
+    descricao: "Monitoramento das despesas do município",
+    iframeUrl: "https://datastudio.google.com/embed/reporting/c06fa8ce-132b-4da5-a182-09c573014760/page/p_223ha4c8zd",
+    icone: "banknote-arrow-up",
+    destaque: false
+  },
+  {
+    id: 4,
+    titulo: "Despesas",
+    categoria: "Despesa",
+    ferramenta: "Power BI",
     descricao: "Monitoramento das despesas do município",
     iframeUrl: "https://app.powerbi.com/view?r=eyJrIjoiM2I4YTBkMGUtOGU2OS00MjA1LWE2NTYtMGY3MjEwY2JjN2Q3IiwidCI6ImZiNTdmZjlkLWJjNjMtNGE2ZS1iMTQ3LTI5NjE3NmVjZTVlYyJ9",
     icone: "banknote-arrow-up",
     destaque: false
   },
   {
-    id: 3,
+    id: 5,
     titulo: "Emendas",
     categoria: "Despesa",
+    ferramenta: "Power BI",
     descricao: "Monitoramento das emendas impositivas do município.",
     iframeUrl: "https://app.powerbi.com/view?r=eyJrIjoiODlkN2Q4NTMtNzk4ZC00ODA0LWJkNTgtMWNmOGU2MzAxZGNlIiwidCI6ImZiNTdmZjlkLWJjNjMtNGE2ZS1iMTQ3LTI5NjE3NmVjZTVlYyJ9",
     icone: "scroll-text",
     destaque: false
   },
   {
-    id: 4,
+    id: 6,
     titulo: "Folha",
     categoria: "Despesa",
+    ferramenta: "Power BI",
     descricao: "Monitoramento dos gastos com folha de pessoal no município",
     iframeUrl: "https://app.fabric.microsoft.com/view?r=eyJrIjoiMjJkZmNiMmYtMTk1OC00ZGQyLTg3ZTEtYWQ3NmRkM2VkYTNlIiwidCI6ImZiNTdmZjlkLWJjNjMtNGE2ZS1iMTQ3LTI5NjE3NmVjZTVlYyJ9",
     icone: "hand-coins",
     destaque: false
   },
   {
-    id: 5,
+    id: 7,
     titulo: "Elaboração 2025",
     categoria: "Elaboração",
+    ferramenta: "Power BI",
     descricao: "Elaboração orçamentária de 2025 para o ano de 2026",
     iframeUrl: "https://app.powerbi.com/view?r=eyJrIjoiNjMxNmY2YjYtYTkzOS00MWE3LThhZjItNjdmYmUzZDhjNWNiIiwidCI6ImZiNTdmZjlkLWJjNjMtNGE2ZS1iMTQ3LTI5NjE3NmVjZTVlYyJ9&pageName=ReportSection4490c6fa130bd8c1d028",
     icone: "orbit",
     destaque: false
   },
   {
-    id: 6,
+    id: 8,
     titulo: "Elaboração 2026",
     categoria: "Elaboração",
+    ferramenta: "Power BI",
     descricao: "Elaboração orçamentária de 2026 para o ano de 2027",
     iframeUrl: "https://app.powerbi.com/view?r=eyJrIjoiMjAyMzY1ZGQtMWE5MC00YTQ1LWI5YmYtNTYwYTIzNDNjYTBjIiwidCI6ImZiNTdmZjlkLWJjNjMtNGE2ZS1iMTQ3LTI5NjE3NmVjZTVlYyJ9",
     icone: "orbit",
@@ -308,6 +334,11 @@ const categoriaCores = {
   "Receita": "bg-emerald-100 text-emerald-800",
   "Despesa": "bg-violet-100 text-violet-800",
   "Elaboração": "bg-blue-100 text-blue-800"
+};
+
+const ferramentaCores = {
+  "Power BI": "bg-orange-100 text-orange-800",
+  "Google Data Studio": "bg-blue-50 text-blue-500",
 };
 
 /* =========================================================
@@ -413,11 +444,13 @@ function renderGrid() {
   grid.innerHTML = filtrados.map((d, i) => {
     const isFav = state.favoritos.has(d.id);
     const badgeColor = categoriaCores[d.categoria] || "bg-slate-100 text-slate-700";
+    const badgeToolColor = ferramentaCores[d.ferramenta] || "bg-slate-100 text-slate-700";
     return `
       <article class="card-enter group bg-white rounded-xl border border-slate-200 shadow-card hover:shadow-cardHover hover:-translate-y-0.5 transition-all duration-300 flex flex-col overflow-hidden" style="animation-delay:${i * 40}ms">
         <div class="p-5 flex-1 flex flex-col">
           <div class="flex items-start justify-between mb-4">
             <span class="text-[11px] font-semibold uppercase tracking-wide px-2.5 py-1 rounded-full ${badgeColor}">${d.categoria}</span>
+            <span class="text-[11px] font-semibold uppercase tracking-wide px-2.5 py-1 rounded-full ${badgeToolColor}">${d.ferramenta}</span>
             <button
               class="favorite-btn ${isFav ? 'is-fav' : ''} w-8 h-8 -mr-1 -mt-1 flex items-center justify-center rounded-full hover:bg-slate-100 transition"
               data-id="${d.id}"
